@@ -1,5 +1,4 @@
 import  {fetchShootingDays} from "@/app/actions/fetchShootingDays"
-import Buttin from "./Buttin"
 import CantonFilters from "./CantonFilters/CantonFilters"
 import {swissCantons} from "./lib"
 
