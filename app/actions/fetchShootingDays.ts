@@ -1,6 +1,6 @@
 "use server"
 
-export async function fetchShootingDays(cantons:string[]){
+export async function fetchShootingDays(cantons:string[], event:number){
     const date:Date = new Date()
     const requestBody = {
         "startRow": 0,
@@ -15,7 +15,7 @@ export async function fetchShootingDays(cantons:string[]){
             "type": {
                 "filterType": "number",
                 "variant": "equals",
-                "filter": 2
+                "filter": event
             },
             "canton": {
                 "filterType": "multi-select",
