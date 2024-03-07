@@ -1,10 +1,10 @@
 "use server"
 
-export async function fetchShootingDays(cantons:string[], event:number){
+export async function fetchShootingDays(cantons:string[], event:number, display: number, page: number){
     const date:Date = new Date()
     const requestBody = {
-        "startRow": 0,
-        "endRow": 65526,
+        "startRow": (page*display)-display,
+        "endRow": (page*display),
         "includeCount": true,
         "filterModels": {
             "from": {
