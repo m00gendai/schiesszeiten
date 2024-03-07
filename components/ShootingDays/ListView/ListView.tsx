@@ -3,7 +3,7 @@ import s from "./ListView.module.css"
 
 interface Props{
     shootingDays: ShootingDays
-    event: string
+    event: string | undefined
 }
 
 export default function ListView({shootingDays, event}:Props){

@@ -6,7 +6,6 @@ import { getShootingType } from "./utils"
 
 interface Props{
     searchParams: {[key: string]: string | string[] | undefined}
-    event: number
 }
 
 
