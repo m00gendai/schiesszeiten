@@ -1,6 +1,7 @@
 import  {fetchShootingDays} from "@/app/actions/fetchShootingDays"
 import CantonFilters from "./CantonFilters/CantonFilters"
 import {swissCantons} from "./lib"
+import ListView from "./ListView/ListView"
 
 interface Props{
     searchParams: {[key: string]: string | string[] | undefined}
@@ -19,11 +20,7 @@ const cantons = paramsCantons.length === 0 ? defaultCantons : paramsCantons
     return(
         <div>
         <CantonFilters />
-        {
-            shootingDays.items.map(shootingDay=>{
-                return <p id={shootingDay.id}>{shootingDay.firingRangeName}</p>
-            })
-        }
+        <ListView shootingDays={shootingDays} />
         </div>
     )
 }
