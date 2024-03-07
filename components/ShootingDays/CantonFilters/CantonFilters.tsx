@@ -24,6 +24,9 @@ export default function CantonFilters(){
     const router:AppRouterInstance = useRouter()
     const path:string = usePathname()
     const params:ReadonlyURLSearchParams = useSearchParams()
+
+    const cantonParams = params.get("cantons")
+    const currentCantons = cantonParams?.split(",") || []
     
     return(
         <div>
@@ -31,7 +34,7 @@ export default function CantonFilters(){
                 return(
                     <React.Fragment key={`checkbox_canton_${canton}`}>
                     <label htmlFor={`checkbox_canton_${canton}`}>{canton}</label>
-                    <input  type="checkbox" id={`checkbox_canton_${canton}`} onChange={()=>setCantons(router, path, params, canton)}></input>
+                    <input  type="checkbox" id={`checkbox_canton_${canton}`} checked={currentCantons.includes(canton) ? true : false} onChange={()=>setCantons(router, path, params, canton)}></input>
                     </React.Fragment>)
             })}
         </div>
