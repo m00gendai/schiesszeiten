@@ -16,5 +16,21 @@ export function getIcon(type:string){
     if(type === "G300"){
       return G300
     }
-    
+}
+
+export function getShootingType(type:number){
+    switch(type){
+        case 1:
+            return "Obligatorische Übung"
+        case 2:
+            return "Feldschiessen"
+        case 3:
+            return "die Jungschützenkurse"
+        case 4:
+            return "Schützenfeste und Vereinswettkämpfe"
+        case 5:
+            return "Trainings"
+        case 6: 
+            return "anderweitige Anlässe"
+    }
 }
