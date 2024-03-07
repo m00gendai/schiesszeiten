@@ -25,7 +25,6 @@ const cantons = paramsCantons.length === 0 ? defaultCantons : paramsCantons
                 return <p id={shootingDay.id}>{shootingDay.firingRangeName}</p>
             })
         }
-        <Buttin />
         </div>
     )
 }
