@@ -1,0 +1,26 @@
+.container{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(64px, 1fr));
+    grid-gap: 1rem;
+}
+
+.box{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
+}
+
+.label{
+    display: none;
+}
+
+.input{
+    position: absolute;
+    bottom: 0;
+    right: 0;
+    width: 30%;
+    aspect-ratio: 1/1;
+
+}

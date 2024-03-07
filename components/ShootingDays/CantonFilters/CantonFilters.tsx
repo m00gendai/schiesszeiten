@@ -4,6 +4,8 @@ import React from "react"
 import { swissCantons } from "../lib"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 import { ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams } from "next/navigation"
+import s from "./CantonFilters.module.css"
+import Image from "next/image"
 
 function setCantons(router:AppRouterInstance, path:string, params:ReadonlyURLSearchParams, canton:string){
     const cantonParams = params.get("cantons")
@@ -29,13 +31,19 @@ export default function CantonFilters(){
     const currentCantons = cantonParams?.split(",") || []
     
     return(
-        <div>
+        <div className={s.container}>
             {swissCantons.map(canton=>{
                 return(
-                    <React.Fragment key={`checkbox_canton_${canton}`}>
-                    <label htmlFor={`checkbox_canton_${canton}`}>{canton}</label>
-                    <input  type="checkbox" id={`checkbox_canton_${canton}`} checked={currentCantons.includes(canton) ? true : false} onChange={()=>setCantons(router, path, params, canton)}></input>
-                    </React.Fragment>)
+                    <div className={s.box} key={`checkbox_canton_${canton}`} onClick={()=>setCantons(router, path, params, canton)}>
+                        <Image
+                            src={`/${canton}.png`}
+                            fill={true}
+                            style={{objectFit: "contain"}}
+                            alt={`${canton}`}
+                        />
+                    <label className={s.label} htmlFor={`checkbox_canton_${canton}`}>{canton}</label>
+                    <input  className={s.input} type="checkbox" id={`checkbox_canton_${canton}`} checked={currentCantons.includes(canton) ? true : false} ></input>
+                    </div>)
             })}
         </div>
     )
