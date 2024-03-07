@@ -16,6 +16,12 @@
     padding: 0.5rem;
 }
 
+.canton{
+    position: relative;
+    height: calc(100% - 0.5rem);
+    aspect-ratio: 1/1;
+}
+
 .info{
     position: relative;
     height: 100%;

@@ -28,6 +28,14 @@ export default function ListItem({shootingDay}:Props){
                 {`${new Date(shootingDay.from).toLocaleTimeString("de-CH", timeOptions)} - ${new Date(shootingDay.to).toLocaleTimeString("de-CH", timeOptions)}`}
                 </div>
             </div>
+            <div className={s.canton}>
+                <Image
+                    src={`/${shootingDay.canton}.png`}
+                    fill={true}
+                    style={{objectFit: "contain"}}
+                    alt={`${shootingDay.canton}`}
+                />
+            </div>
             <div className={s.info}>
                 <div className={s.place}>
                     {shootingDay.firingRangeName}
@@ -45,7 +53,7 @@ export default function ListItem({shootingDay}:Props){
                 />
             </div>
             <div className={s.map}>
-                
+
             </div>
         </div>
     )
