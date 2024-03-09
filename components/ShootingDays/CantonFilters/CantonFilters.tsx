@@ -52,26 +52,7 @@ export default function CantonFilters(){
     
     return(
         <>
-        <Drawer opened={opened} onClose={close} title="Kantone" className={s.mobile} size={"100%"} >
-            {<div className={s.container}>
-                {swissCantons.map((canton, index)=>{
-                    return(
-                        <div className={s.box} key={`checkbox_canton_${canton}`} onClick={()=>setCantons(router, path, params, checkboxRef, index, canton)}>
-                            <Image
-                                src={`/${canton}.png`}
-                                fill={true}
-                                style={{objectFit: "contain"}}
-                                alt={`${canton}`}
-                            />
-                            <label className={s.label} htmlFor={`checkbox_canton_${canton}`}>{canton}</label>
-                            {/*@ts-expect-error */}
-                            <input ref={(element)=>checkboxRef.current[index] = element} className={s.input} type="checkbox" id={`checkbox_canton_${canton}`} onChange={()=>setCantons(router, path, params, checkboxRef, index, canton)} defaultChecked={currentCantons.includes(canton) ? true : false} ></input>
-                        </div>
-                    )
-                })}
-            </div>}
-        </Drawer>
-        <Drawer opened={opened} onClose={close} title="Kantone" className={s.desktop} size={"30vw"}>
+        <Drawer opened={opened} onClose={close} title="Kantone" className={s.desktop} size={"25%"} lockScroll={false}>
             <div className={s.container}>
                 {swissCantons.map((canton, index)=>{
                     return(
@@ -90,7 +71,7 @@ export default function CantonFilters(){
                 })}
             </div>
         </Drawer>
-        <Button onClick={open}>Kantone</Button>
+        <Button className={s.desktop} onClick={open}>Kantone</Button>
         </>
     )
 }
