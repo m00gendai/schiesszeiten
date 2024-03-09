@@ -1,0 +1,19 @@
+.container{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+    width: 100%;
+    padding: 1rem;
+}
+
+.inner{
+    position: relative;
+    width: 100%;
+    max-width: 1200px;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    flex-wrap: wrap;
+}
