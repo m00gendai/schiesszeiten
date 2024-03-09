@@ -1,22 +1,32 @@
-"use client"
-
-import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
 import s from "./MapView.module.css"
+import Map from "./Map"
 
-export default function MapView(){
+interface Props{
+    shootingDays: ShootingDays
+}
+
+async function convertSwissgrid(coord1:string, coord2:string){
+    // The coordinates from the Shooting Days are, for SOME GODFORSAKEN REASON, in LV03
+   const getCoordinates = await fetch(`https://geodesy.geo.admin.ch/reframe/lv03towgs84?easting=${coord1}&northing=${coord2}&format=json`)
+   return await getCoordinates.json()
+}
+
+export default async function MapView({shootingDays}:Props){
+
+    const markerData = await Promise.all(shootingDays.items.map(async item=>{
+        return {
+            coordinates: await convertSwissgrid(item.coordinates.split("/")[0], (item.coordinates.split("/")[1])),
+            place: item.firingRangeName,
+            club: item.organizationName,
+            event: item.event,
+            dateStart: item.from,
+            dateEnd: item.to
+        }
+    }))
+
     return(
         <div className={s.container}>
-        <MapContainer center={[51.505, -0.09]} zoom={13} scrollWheelZoom={false} className={s.map}>
-  <TileLayer
-    attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-  />
-  <Marker position={[51.505, -0.09]}>
-    <Popup>
-      A pretty CSS3 popup. <br /> Easily customizable.
-    </Popup>
-  </Marker>
-</MapContainer>
-</div>
+            <Map markerData={markerData}/>
+        </div>
     )
 }

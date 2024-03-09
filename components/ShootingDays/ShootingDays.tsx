@@ -49,8 +49,6 @@ async function fetchShootingDays(cantons:string[], event:number, display: number
         ]
     }
 
-    console.log(requestBody)
-
     const getShootingDays:Response = await fetch(`https://www.sat.admin.ch/api/ShootingDayDeclaration/search`, {
         method: "POST",
         headers: {
@@ -90,7 +88,7 @@ export default async function ShootingDays({searchParams}:Props){
                 <EventFilter_mobile />
                 <ListView shootingDays={shootingDays} event={getShootingType(event)}/>
                 <Paginate count={shootingDays.totalItems} display={display}/>
-                <MapView />
+                <MapView shootingDays={shootingDays}/>
             </div>
         </div>
     )
