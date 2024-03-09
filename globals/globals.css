@@ -11,3 +11,11 @@
   margin: 0;
   min-width: 0;
 }
+
+body{
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+}
