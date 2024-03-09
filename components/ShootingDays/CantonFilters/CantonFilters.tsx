@@ -6,16 +6,13 @@ import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.share
 import { ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams } from "next/navigation"
 import s from "./CantonFilters.module.css"
 import Image from "next/image"
-
-function setParams(router:AppRouterInstance, path:string, newParams:URLSearchParams){
-    router.push(`${path}?${newParams.toString()}`)
-}
+import { setParams } from "../utils"
 
 function setCantons(router:AppRouterInstance, path:string, params:ReadonlyURLSearchParams, checkboxRef:React.RefObject<(HTMLInputElement[] | null)>, index:number, canton:string){
     const cantonParams = params.get("cantons")
     const currentCantons = cantonParams?.length === 0 ? [] : cantonParams?.split(",") || []
     const newParams = new URLSearchParams(params) 
-
+    newParams.delete("page")
     if(!currentCantons.includes(canton)){
         const newCantons = [...currentCantons, canton]
         newParams.delete("cantons")
