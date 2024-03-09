@@ -4,7 +4,6 @@
     border: 1px solid black;
     display: flex;
     justify-content: flex-start;
-    align-items: center;
     gap: 1rem;
     padding: 0.5rem 0;
 }
@@ -28,26 +27,56 @@
 
 .icons{
     position: relative;
-    height: calc(100% - 0.5rem);
-    aspect-ratio: 2.5/1;
     display: flex;
     justify-content: space-between;
     align-items: center;
+    padding: 0.5rem;
 }
 
 .canton{
     position: relative;
-    height: calc(100% - 0.5rem);
     aspect-ratio: 1/1;
 }
 
+
+.image{
+    position: relative;
+    aspect-ratio: 1/1;
+}
+
+.map{
+    position: relative;
+    aspect-ratio: 1/1;
+    background: red;
+}
+
 @media screen and (min-aspect-ratio: 13/9){
+    .container{
+        align-items: center;
+    }
     .mobile{
         display: none;
+    }
+    .icons{
+        height: calc(100% - 0.5rem);
+        aspect-ratio: 2.5/1;
+    }
+    .map{
+        height: 100%;
+    }
+    .image{
+        height: 100%;
+    }
+    .canton{
+        height: 100%;
     }
 }
 
 @media screen and (max-aspect-ratio: 13/9){
+    .container{
+        align-items: flex-start;
+        align-content: flex-start;
+    }
     .dateTime{
         height: auto;
         width: 100%;
@@ -64,30 +93,17 @@
     .container{
         flex-wrap: wrap;
     }
-    .canton{
-        aspect-ratio: 1/1;
-        width: 100%;
-    }
     .icons{
-        aspect-ratio: 3.5/1;
-        height: auto;
+        height: 5rem;
         width: 100%;
-        display: grid;
-        grid-template-columns: repeat(3, 1fr);
-        grid-gap: 1rem;
-        padding: 0.5rem;
     }
-}
-
-.image{
-    position: relative;
-    height: 100%;
-    aspect-ratio: 1/1;
-}
-
-.map{
-    position: relative;
-    height: 100%;
-    aspect-ratio: 1/1;
-    background: red;
+    .canton{
+        width: 3rem;
+    }
+    .image{
+        width: 3rem;
+    }
+    .map{
+        width: 3rem;
+    }
 }
