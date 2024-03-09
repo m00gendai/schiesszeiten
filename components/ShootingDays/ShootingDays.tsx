@@ -3,6 +3,7 @@ import {swissCantons} from "./lib"
 import ListView from "./ListView/ListView"
 import { getShootingType } from "./utils"
 import Paginate from "./Pagination/Pagination"
+import CantonFilters_mobile from "./CantonFilters/CantonFilters_mobile"
 
 interface Props{
     searchParams: {[key: string]: string | string[] | undefined}
@@ -79,6 +80,7 @@ export default async function ShootingDays({searchParams}:Props){
     return(
         <div>
         <CantonFilters />
+        <CantonFilters_mobile />
         <ListView shootingDays={shootingDays} event={getShootingType(event)}/>
         <Paginate count={shootingDays.totalItems} display={display}/>
         </div>
