@@ -3,6 +3,8 @@ import P50 from "@/public/p50.svg"
 import P25 from "@/public/p25.svg"
 import G300 from "@/public/g300.svg"
 
+import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
+
 export function getIcon(type:string){
     if(type === "P50"){
         return P50
@@ -33,4 +35,8 @@ export function getShootingType(type:number){
         case 6: 
             return "anderweitige Anlässe"
     }
+}
+
+export function setParams(router:AppRouterInstance, path:string, newParams:URLSearchParams){
+    router.push(`${path}?${newParams.toString()}`, {scroll: true})
 }
