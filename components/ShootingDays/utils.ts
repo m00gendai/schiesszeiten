@@ -27,7 +27,7 @@ export function getShootingType(type:number){
         case 2:
             return "Feldschiessen"
         case 3:
-            return "die Jungschützenkurse"
+            return "Jungschützenkurse"
         case 4:
             return "Schützenfeste und Vereinswettkämpfe"
         case 5:
