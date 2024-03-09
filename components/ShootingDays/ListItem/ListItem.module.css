@@ -6,7 +6,7 @@
     justify-content: flex-start;
     align-items: center;
     gap: 1rem;
-    height: 5rem;
+    padding: 0.5rem 0;
 }
 
 .dateTime{
@@ -19,12 +19,6 @@
     font-weight: bolder;
 }
 
-.canton{
-    position: relative;
-    height: calc(100% - 0.5rem);
-    aspect-ratio: 1/1;
-}
-
 .info{
     position: relative;
     height: 100%;
@@ -32,15 +26,68 @@
     flex-grow: 1;
 } 
 
-.image{
+.icons{
+    position: relative;
+    height: calc(100% - 0.5rem);
+    aspect-ratio: 2.5/1;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.canton{
     position: relative;
     height: calc(100% - 0.5rem);
     aspect-ratio: 1/1;
 }
 
+@media screen and (min-aspect-ratio: 13/9){
+    .mobile{
+        display: none;
+    }
+}
+
+@media screen and (max-aspect-ratio: 13/9){
+    .dateTime{
+        height: auto;
+        width: 100%;
+        display: flex;
+        justify-content: space-between;
+    }
+    .info{
+        height: auto;
+        width: 100%;
+    }
+    .desktop{
+        display: none;
+    }
+    .container{
+        flex-wrap: wrap;
+    }
+    .canton{
+        aspect-ratio: 1/1;
+        width: 100%;
+    }
+    .icons{
+        aspect-ratio: 3.5/1;
+        height: auto;
+        width: 100%;
+        display: grid;
+        grid-template-columns: repeat(3, 1fr);
+        grid-gap: 1rem;
+        padding: 0.5rem;
+    }
+}
+
+.image{
+    position: relative;
+    height: 100%;
+    aspect-ratio: 1/1;
+}
+
 .map{
     position: relative;
-    height: calc(100% - 0.5rem);
+    height: 100%;
     aspect-ratio: 1/1;
     background: red;
 }

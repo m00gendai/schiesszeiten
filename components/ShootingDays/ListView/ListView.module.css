@@ -7,3 +7,11 @@
     align-items: flex-start;
     gap: 1rem;
 }
+
+.items{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    grid-gap: 1rem;
+}
