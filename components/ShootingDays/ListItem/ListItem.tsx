@@ -37,6 +37,9 @@ export default function ListItem({shootingDay}:Props){
                 />
             </div>
             <div className={s.info}>
+                <div className={s.event}>
+                    {shootingDay.event}
+                </div>
                 <div className={s.place}>
                     {shootingDay.firingRangeName}
                 </div>

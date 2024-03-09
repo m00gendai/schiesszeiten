@@ -12,8 +12,11 @@
 .dateTime{
     position: relative;
     height: 100%;
-    background: blue;
     padding: 0.5rem;
+}
+
+.date{
+    font-weight: bolder;
 }
 
 .canton{
@@ -25,7 +28,6 @@
 .info{
     position: relative;
     height: 100%;
-    background: yellow;
     padding: 0.5rem;
     flex-grow: 1;
 } 
@@ -34,7 +36,6 @@
     position: relative;
     height: calc(100% - 0.5rem);
     aspect-ratio: 1/1;
-    background: green;
 }
 
 .map{
