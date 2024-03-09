@@ -7,6 +7,7 @@ import CantonFilters_mobile from "./CantonFilters/CantonFilters_mobile"
 import EventFilter from "./EventFilter/EventFilter"
 import s from "./ShootingDays.module.css"
 import EventFilter_mobile from "./EventFilter/EventFilter_mobile"
+import MapView from "./MapView/MapView"
 
 interface Props{
     searchParams: {[key: string]: string | string[] | undefined}
@@ -89,6 +90,7 @@ export default async function ShootingDays({searchParams}:Props){
                 <EventFilter_mobile />
                 <ListView shootingDays={shootingDays} event={getShootingType(event)}/>
                 <Paginate count={shootingDays.totalItems} display={display}/>
+                <MapView />
             </div>
         </div>
     )
