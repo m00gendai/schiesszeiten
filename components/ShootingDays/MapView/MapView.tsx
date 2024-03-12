@@ -1,5 +1,6 @@
 import s from "./MapView.module.css"
 import Map from "./Map"
+import { MarkerData } from "./Interface_MapView"
 
 interface Props{
     shootingDays: ShootingDays
@@ -13,7 +14,7 @@ async function convertSwissgrid(coord1:string, coord2:string){
 
 export default async function MapView({shootingDays}:Props){
 
-    const markerData = await Promise.all(shootingDays.items.map(async item=>{
+    const markerData:MarkerData[] = await Promise.all(shootingDays.items.map(async item=>{
         return {
             coordinates: await convertSwissgrid(item.coordinates.split("/")[0], (item.coordinates.split("/")[1])),
             place: item.firingRangeName,
