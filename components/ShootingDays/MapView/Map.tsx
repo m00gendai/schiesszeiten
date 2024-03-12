@@ -1,10 +1,12 @@
 "use client"
 
-import { LayerGroup, MapContainer, Marker, Popup, Rectangle, TileLayer, useMap } from "react-leaflet"
+import { MapContainer, Marker, Popup, TileLayer } from "react-leaflet"
 import s from "./MapView.module.css"
 import { MarkerData } from "./Interface_MapView"
-import { useMemo, useRef, useState } from "react"
-import { LatLngBoundsExpression } from "leaflet"
+import 'leaflet/dist/leaflet.css';
+import { useEffect, useState } from "react";
+import { LatLngBoundsExpression, Map as MapInstance } from "leaflet";
+
 
 interface Props{
     markerData: MarkerData[]
@@ -28,38 +30,23 @@ export default function Map({markerData}:Props){
         }       
     })
 
-    const boundsArray = initialBounds.filter(item=> item !== undefined) as number[][]
+    const boundsArray = initialBounds.filter(item=> item !== undefined) as LatLngBoundsExpression
+    const [map, setMap] = useState<MapInstance | null>(null)
 
+    useEffect(()=>{
+        if(map){
+            map.fitBounds(boundsArray)
+        }
+    },[map, boundsArray])
+    
 
-    function SetBoundsRectangles() {
-        const [bounds, setBounds] = useState<LatLngBoundsExpression>(boundsArray as LatLngBoundsExpression)
-        const map = useMap()
-      
-        const innerHandlers = useMemo(() => {
-            
-              setBounds(bounds)
-              map.fitBounds(bounds)
-                    },
-          [map]
-        )
-      
-        return (
-            
-            <Rectangle
-              bounds={bounds}
-              /*@ts-expect-error*/
-              eventHandlers={innerHandlers}
-              pathOptions={{color: "rgba(0,0,0,0"}}
-            />
-        )
-      }
-      
     return(
-        <MapContainer center={[46.80, 8.22]} zoom={8} scrollWheelZoom={false} className={s.map} >
+        <MapContainer ref={setMap} center={[46.80, 8.22]} zoom={8} scrollWheelZoom={false} className={s.map} >
         <TileLayer
           attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
+
         {markerData.map((marker, index)=>{
             if(marker.coordinates.easting){
                 return(
@@ -71,7 +58,7 @@ export default function Map({markerData}:Props){
                 )
             }
         })}
-         <SetBoundsRectangles />
+
       </MapContainer>
     )
 }
