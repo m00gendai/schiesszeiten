@@ -24,10 +24,17 @@ export default async function MapView({shootingDays}:Props){
             dateEnd: item.to
         }
     }))
+    const coords: {easting: string, northing: string}[] = []
+    markerData.forEach(marker =>{
+        const grid = marker.coordinates
+            if(!coords.find(element => element.northing === grid.northing && element.easting === grid.easting)){
+                coords.push(grid)
+            }
+    })
 
     return(
         <div className={s.container}>
-            <Map markerData={markerData}/>
+            <Map coords={coords} markerData={markerData}/>
         </div>
     )
 }

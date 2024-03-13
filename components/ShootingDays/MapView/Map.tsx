@@ -9,10 +9,11 @@ import { LatLngBoundsExpression, Map as MapInstance } from "leaflet";
 
 
 interface Props{
+    coords: {easting: string, northing: string}[] 
     markerData: MarkerData[]
 }
 
-export default function Map({markerData}:Props){
+export default function Map({coords, markerData}:Props){
 
     const dateOptions:Intl.DateTimeFormatOptions = {
         year: "numeric", 
@@ -47,12 +48,16 @@ export default function Map({markerData}:Props){
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
         />
 
-        {markerData.map((marker, index)=>{
-            if(marker.coordinates.easting){
+        {coords.map((coord, index)=>{
+            if(coord.easting){
                 return(
-                    <Marker key={`marker_${index}`} position={[parseFloat(marker.coordinates.northing), parseFloat(marker.coordinates.easting)]}>
+                    <Marker key={`marker_${index}`} position={[parseFloat(coord.northing), parseFloat(coord.easting)]}>
                         <Popup>
-                            <p style={{whiteSpace: "pre"}}>{`${new Date(marker.dateStart).toLocaleDateString("de-CH", dateOptions)} ${new Date(marker.dateStart).toLocaleTimeString("de-CH", timeOptions)} - ${new Date(marker.dateEnd).toLocaleTimeString("de-CH", timeOptions)}\n${marker.event}\n${marker.place}\n${marker.club}`}</p>
+                            {markerData.map(marker =>{
+                                if(marker.coordinates.easting === coord.easting && marker.coordinates.northing === coord.northing){
+                                    return <p style={{whiteSpace: "pre"}} dangerouslySetInnerHTML={{__html: `<strong>${new Date(marker.dateStart).toLocaleDateString("de-CH", dateOptions)}</strong> ${new Date(marker.dateStart).toLocaleTimeString("de-CH", timeOptions)} - ${new Date(marker.dateEnd).toLocaleTimeString("de-CH", timeOptions)}\n${marker.event}\n${marker.place}\n${marker.club}`}}></p>
+                                }
+                            })}
                         </Popup>
                     </Marker>
                 )
