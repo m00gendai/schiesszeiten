@@ -12,7 +12,7 @@ export default function FilterDrawer(){
     
     return(
         <>
-        <Drawer opened={opened} onClose={close} title="Filter" className={s.desktop} size={"25vw"} lockScroll={false}>
+        <Drawer opened={opened} onClose={close} title="Filter" className={s.desktop} size={"25vw"} lockScroll={false} zIndex={999}>
             <Tabs defaultValue="cantons">
                 <Tabs.List >
                     <Tabs.Tab value="cantons">

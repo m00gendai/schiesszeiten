@@ -10,7 +10,7 @@
 
 .wrapper{
     position: relative;
-    width: calc(100% - 5rem);
+    width: calc(100% - 3rem);
     height: 100%;
     display: flex;
     justify-content: flex-start;
@@ -36,20 +36,26 @@
     font-style: italic;
 }
 
+.place{
+    hyphens: auto;
+}
+
 .icons{
     position: relative;
-    width: 5rem;
+    width: 3rem;
     display: flex;
     justify-content: flex-end;
     align-items: center;
     flex-wrap: wrap;
+    border-left: 1px solid black;
+    margin: 0 0 0 0.5rem;
 }
 
 .iconsInner{
     position: relative;
-    width: 100%;
+    width: 2rem;
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1, 1fr);
     grid-gap: 0.5rem;
 }
 
@@ -68,7 +74,5 @@
 .map{
     position: relative;
     width: 100%;
-    aspect-ratio: 4/3;
-    grid-column-start: 1;
-    grid-column-end: 3;
+    aspect-ratio: 1/1;
 }
