@@ -1,0 +1,16 @@
+.dekstop{
+    position: relative;
+}
+
+@media screen and (max-aspect-ratio: 13/9){
+    .desktop{
+        display: none;
+    }
+}
+
+@media screen and (min-aspect-ratio: 13/9){
+    .mobile{
+        display: none;
+    }
+}
+

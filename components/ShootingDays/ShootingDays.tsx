@@ -1,13 +1,10 @@
-import CantonFilters from "./CantonFilters/CantonFilters"
 import {swissCantons} from "./lib"
 import ListView from "./ListView/ListView"
 import { getShootingType } from "./utils"
 import Paginate from "./Pagination/Pagination"
-import CantonFilters_mobile from "./CantonFilters/CantonFilters_mobile"
-import EventFilter from "./EventFilter/EventFilter"
 import s from "./ShootingDays.module.css"
-import EventFilter_mobile from "./EventFilter/EventFilter_mobile"
 import MapView from "./MapView/MapView"
+import FilterDrawer from "./FilterDrawer/FilterDrawer"
 
 interface Props{
     searchParams: {[key: string]: string | string[] | undefined}
@@ -82,10 +79,7 @@ export default async function ShootingDays({searchParams}:Props){
     return(
         <div className={s.container}>
             <div className={s.inner}>
-                <CantonFilters />
-                <CantonFilters_mobile />
-                <EventFilter />
-                <EventFilter_mobile />
+                <FilterDrawer />
                 <ListView shootingDays={shootingDays} event={getShootingType(event)}/>
                 <Paginate count={shootingDays.totalItems} display={display}/>
                 <MapView shootingDays={shootingDays}/>
