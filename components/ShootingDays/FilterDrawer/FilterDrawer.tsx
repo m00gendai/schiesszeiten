@@ -5,8 +5,23 @@ import { Drawer, Button, Tabs, Space } from '@mantine/core';
 import s from "./FilterDrawer.module.css"
 import CantonFilters from './CantonFilters/CantonFilters';
 import EventFilter from './EventFilter/EventFilter';
+import { ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams } from 'next/navigation';
+import { AppRouterInstance } from 'next/dist/shared/lib/app-router-context.shared-runtime';
+import { setParams } from '../utils';
+
+function setView(router:AppRouterInstance, path:string, params:ReadonlyURLSearchParams, view: string){
+    const newParams = new URLSearchParams(params) 
+    newParams.delete("view")
+    newParams.append("view", view)
+    setParams(router,path,newParams)
+}
 
 export default function FilterDrawer(){
+
+    const router:AppRouterInstance = useRouter()
+    const path:string = usePathname()
+    const params:ReadonlyURLSearchParams = useSearchParams()
+    const viewParams = params.get("view")
 
     const [opened, { open, close }] = useDisclosure(false);
     
@@ -50,8 +65,12 @@ export default function FilterDrawer(){
                 </Tabs.Panel>
             </Tabs>
         </Drawer>
-        <Button className={s.desktop} onClick={open}>Filter</Button>
-        <Button className={s.mobile} onClick={open}>Filter</Button>
+        <div className={s.buttonRow}>
+            <Button className={s.desktop} onClick={open}>Filter</Button>
+            <Button className={s.mobile} onClick={open}>Filter</Button>
+            <Button onClick={()=>setView(router, path, params, "list")}>Liste</Button>
+            <Button onClick={()=>setView(router, path, params, "map")}>Karte</Button>
+        </div>
         </>
     )
 }
