@@ -2,7 +2,7 @@
 
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 import { ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams } from "next/navigation"
-import { getShootingType, setParams } from "../utils"
+import { getShootingType, setParams } from "../../utils"
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Button } from '@mantine/core';
 import s from "./EventFilter.module.css"

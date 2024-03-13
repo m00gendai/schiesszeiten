@@ -1,12 +1,12 @@
 "use client"
 
 import React, { useRef } from "react"
-import { swissCantons } from "../lib"
+import { swissCantons } from "../../lib"
 import { AppRouterInstance } from "next/dist/shared/lib/app-router-context.shared-runtime"
 import { ReadonlyURLSearchParams, usePathname, useRouter, useSearchParams } from "next/navigation"
 import s from "./CantonFilters.module.css"
 import Image from "next/image"
-import { setParams } from "../utils"
+import { setParams } from "../../utils"
 import { useDisclosure } from '@mantine/hooks';
 import { Drawer, Button } from '@mantine/core';
 
