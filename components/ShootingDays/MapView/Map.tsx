@@ -53,9 +53,9 @@ export default function Map({coords, markerData}:Props){
                 return(
                     <Marker key={`marker_${index}`} position={[parseFloat(coord.northing), parseFloat(coord.easting)]}>
                         <Popup>
-                            {markerData.map(marker =>{
+                            {markerData.map((marker, index) =>{
                                 if(marker.coordinates.easting === coord.easting && marker.coordinates.northing === coord.northing){
-                                    return <p style={{whiteSpace: "pre"}} dangerouslySetInnerHTML={{__html: `<strong>${new Date(marker.dateStart).toLocaleDateString("de-CH", dateOptions)}</strong> ${new Date(marker.dateStart).toLocaleTimeString("de-CH", timeOptions)} - ${new Date(marker.dateEnd).toLocaleTimeString("de-CH", timeOptions)}\n${marker.event}\n${marker.place}\n${marker.club}`}}></p>
+                                    return <p key={`popupText_${index}`} style={{whiteSpace: "pre"}} dangerouslySetInnerHTML={{__html: `<strong>${new Date(marker.dateStart).toLocaleDateString("de-CH", dateOptions)}</strong> ${new Date(marker.dateStart).toLocaleTimeString("de-CH", timeOptions)} - ${new Date(marker.dateEnd).toLocaleTimeString("de-CH", timeOptions)}\n${marker.event}\n${marker.place}\n${marker.club}`}}></p>
                                 }
                             })}
                         </Popup>
