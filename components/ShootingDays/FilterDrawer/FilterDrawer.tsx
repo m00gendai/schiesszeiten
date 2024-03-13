@@ -51,6 +51,7 @@ export default function FilterDrawer(){
             </Tabs>
         </Drawer>
         <Button className={s.desktop} onClick={open}>Filter</Button>
+        <Button className={s.mobile} onClick={open}>Filter</Button>
         </>
     )
 }
