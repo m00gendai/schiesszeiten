@@ -1,115 +1,74 @@
 .container{
     position: relative;
     width: 100%;
-    border: 1px solid black;
     display: flex;
     justify-content: flex-start;
-    gap: 1rem;
-    padding: 0.5rem 0;
+    align-items: center;
+    border: 1px solid black;
+    padding: 0.5rem;
+}
+
+.wrapper{
+    position: relative;
+    width: calc(100% - 5rem);
+    height: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: flex-start;
+    flex-wrap: wrap;
 }
 
 .dateTime{
     position: relative;
-    height: 100%;
+    width: 100%;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+    gap: 2rem;
     font-size: 1.25rem;
-    padding: 0.5rem;
 }
 
 .date{
     font-weight: bolder;
 }
 
-.info{
-    position: relative;
-    height: 100%;
-    padding: 0.5rem;
-    flex-grow: 1;
-} 
+.event{
+    font-style: italic;
+}
 
 .icons{
     position: relative;
+    width: 5rem;
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-end;
     align-items: center;
-    padding: 0.5rem;
+    flex-wrap: wrap;
+}
+
+.iconsInner{
+    position: relative;
+    width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-gap: 0.5rem;
+}
+
+.image{
+    position: relative;
+    width: 100%;
+    aspect-ratio: 1/1;
 }
 
 .canton{
     position: relative;
-    aspect-ratio: 1/1;
-}
-
-
-.image{
-    position: relative;
+    width: 100%;
     aspect-ratio: 1/1;
 }
 
 .map{
     position: relative;
-    aspect-ratio: 1/1;
-    background: red;
-}
-
-@media screen and (min-aspect-ratio: 13/9){
-    .container{
-        align-items: center;
-    }
-    .mobile{
-        display: none;
-    }
-    .icons{
-        height: calc(100% - 0.5rem);
-        width: 25%;
-        gap: 2rem;
-    }
-    .map{
-        height: 100%;
-    }
-    .image{
-        height: 100%;
-    }
-    .canton{
-        height: 100%;
-    }
-}
-
-@media screen and (max-aspect-ratio: 13/9){
-    .container{
-        align-items: flex-start;
-        align-content: flex-start;
-    }
-    .dateTime{
-        height: auto;
-        width: 100%;
-        display: flex;
-        justify-content: flex-start;
-        gap: 2rem;
-        padding: 0 0.5rem;
-    }
-    .info{
-        height: auto;
-        width: 100%;
-        padding: 0 0.5rem;
-    }
-    .desktop{
-        display: none;
-    }
-    .container{
-        flex-wrap: wrap;
-    }
-    .icons{
-       position: absolute;
-       right: 0;
-       top: 0;
-    }
-    .canton{
-        width: 3rem;
-    }
-    .image{
-        width: 3rem;
-    }
-    .map{
-        width: 3rem;
-    }
+    width: 100%;
+    aspect-ratio: 4/3;
+    grid-column-start: 1;
+    grid-column-end: 3;
 }
