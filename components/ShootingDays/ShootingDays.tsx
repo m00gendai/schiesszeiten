@@ -73,6 +73,10 @@ export default async function ShootingDays({searchParams}:Props){
     const paramsPage = typeof(searchParams.page) === "string" ? parseInt(searchParams.page) : null
     const currentPage = paramsPage ? paramsPage : defaultPage
 
+    const defaultView = "list"
+    const paramsView = typeof(searchParams.view) === "string" ? searchParams.view : null
+    const currentView = paramsView ? paramsView : defaultView
+
 
     const shootingDays: ShootingDays = await fetchShootingDays(cantons, event, display, currentPage)
 
@@ -80,9 +84,9 @@ export default async function ShootingDays({searchParams}:Props){
         <div className={s.container}>
             <div className={s.inner}>
                 <FilterDrawer />
-                <ListView shootingDays={shootingDays} event={getShootingType(event)}/>
-                <Paginate count={shootingDays.totalItems} display={display}/>
-                <MapView shootingDays={shootingDays}/>
+                {currentView === "list" ? <ListView shootingDays={shootingDays} event={getShootingType(event)} display={display}/> : null}
+                {currentView === "map" ? <MapView shootingDays={shootingDays} event={getShootingType(event)} display={display}/> : null}
+                
             </div>
         </div>
     )

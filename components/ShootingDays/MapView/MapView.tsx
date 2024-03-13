@@ -1,9 +1,12 @@
 import s from "./MapView.module.css"
 import Map from "./Map"
 import { MarkerData } from "./Interface_MapView"
+import Paginate from "../Pagination/Pagination"
 
 interface Props{
     shootingDays: ShootingDays
+    event: string | undefined
+    display: number
 }
 
 async function convertSwissgrid(coord1:string, coord2:string){
@@ -12,7 +15,7 @@ async function convertSwissgrid(coord1:string, coord2:string){
    return await getCoordinates.json()
 }
 
-export default async function MapView({shootingDays}:Props){
+export default async function MapView({shootingDays, event, display}:Props){
 
     const markerData:MarkerData[] = await Promise.all(shootingDays.items.map(async item=>{
         return {
@@ -34,7 +37,9 @@ export default async function MapView({shootingDays}:Props){
 
     return(
         <div className={s.container}>
+            <h1>{event}</h1>
             <Map coords={coords} markerData={markerData}/>
+            <Paginate count={shootingDays.totalItems} display={display}/>
         </div>
     )
 }
