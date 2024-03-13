@@ -11,6 +11,7 @@
 .dateTime{
     position: relative;
     height: 100%;
+    font-size: 1.25rem;
     padding: 0.5rem;
 }
 
@@ -59,7 +60,8 @@
     }
     .icons{
         height: calc(100% - 0.5rem);
-        aspect-ratio: 2.5/1;
+        width: 25%;
+        gap: 2rem;
     }
     .map{
         height: 100%;
@@ -81,11 +83,14 @@
         height: auto;
         width: 100%;
         display: flex;
-        justify-content: space-between;
+        justify-content: flex-start;
+        gap: 2rem;
+        padding: 0 0.5rem;
     }
     .info{
         height: auto;
         width: 100%;
+        padding: 0 0.5rem;
     }
     .desktop{
         display: none;
@@ -94,8 +99,9 @@
         flex-wrap: wrap;
     }
     .icons{
-        height: 5rem;
-        width: 100%;
+       position: absolute;
+       right: 0;
+       top: 0;
     }
     .canton{
         width: 3rem;

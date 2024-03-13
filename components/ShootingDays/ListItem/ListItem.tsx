@@ -27,14 +27,27 @@ export default function ListItem({shootingDay}:Props){
                 <div className={s.time}>
                 {`${new Date(shootingDay.from).toLocaleTimeString("de-CH", timeOptions)} - ${new Date(shootingDay.to).toLocaleTimeString("de-CH", timeOptions)}`}
                 </div>
+                <div className={`${s.icons} ${s.mobile}`}>
+                <div className={s.image}>
+                    <Image 
+                        src={getIcon(shootingDay.disciplineShortNameGerman)}
+                        fill={true}
+                        style={{objectFit: "contain"}}
+                        alt={"Pistole 50/25m"}
+                    />
+                </div>
+                <div className={`${s.canton} ${s.mobile}`}>
+                    <Image
+                        src={`/${shootingDay.canton}.png`}
+                        fill={true}
+                        style={{objectFit: "contain"}}
+                        alt={`${shootingDay.canton}`}
+                    />
+                </div>
+                <div className={s.map}>
+
+                </div>
             </div>
-            <div className={`${s.canton} ${s.desktop}`}>
-                <Image
-                    src={`/${shootingDay.canton}.png`}
-                    fill={true}
-                    style={{objectFit: "contain"}}
-                    alt={`${shootingDay.canton}`}
-                />
             </div>
             <div className={s.info}>
                 <div className={s.event}>
@@ -47,7 +60,7 @@ export default function ListItem({shootingDay}:Props){
                     {shootingDay.organizationName}
                 </div>
             </div>
-            <div className={s.icons}>
+            <div className={`${s.icons} ${s.desktop}`}>
                 <div className={s.image}>
                     <Image 
                         src={getIcon(shootingDay.disciplineShortNameGerman)}
@@ -56,7 +69,7 @@ export default function ListItem({shootingDay}:Props){
                         alt={"Pistole 50/25m"}
                     />
                 </div>
-                <div className={`${s.canton} ${s.mobile}`}>
+                <div className={`${s.canton}`}>
                     <Image
                         src={`/${shootingDay.canton}.png`}
                         fill={true}
