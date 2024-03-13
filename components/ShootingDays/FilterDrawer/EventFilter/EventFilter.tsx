@@ -10,6 +10,7 @@ import { useEffect, useState } from "react";
 function setEvent(router:AppRouterInstance, path:string, params:ReadonlyURLSearchParams, currentEvent: number){
     const newParams = new URLSearchParams(params) 
     newParams.delete("event")
+    newParams.delete("page")
     newParams.append("event", currentEvent.toString())
     setParams(router,path,newParams)
 }
